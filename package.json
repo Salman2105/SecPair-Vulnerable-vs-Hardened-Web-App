@@ -1,0 +1,44 @@
+{
+  "name": "secpair",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "vulnerable/backend",
+    "vulnerable/frontend",
+    "hardened/backend",
+    "hardened/frontend"
+  ],
+  "scripts": {
+    "dev:vulnerable:backend": "npm run dev -w @secpair/vulnerable-backend",
+    "dev:vulnerable:frontend": "npm run dev -w @secpair/vulnerable-frontend",
+    "dev:hardened:backend": "npm run dev -w @secpair/hardened-backend",
+    "dev:hardened:frontend": "npm run dev -w @secpair/hardened-frontend",
+    "build": "npm run build --workspaces --if-present",
+    "test": "node --test --test-concurrency=1 tests/*.test.js",
+    "test:browser": "node scripts/browser-test.js",
+    "lab:temporary": "node scripts/temporary-lab.js",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "engines": {
+    "node": ">=22.14"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.19.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "mongodb-memory-server": "^10.2.0",
+    "playwright": "^1.55.1",
+    "prettier": "^3.9.9",
+    "supertest": "^7.1.4",
+    "vite": "^6.4.1"
+  }
+}
